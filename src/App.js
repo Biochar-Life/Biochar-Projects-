@@ -1,4 +1,5 @@
 import React from 'react';
+<<<<<<< HEAD
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import Dashboard from './components/Dashboard';
@@ -28,6 +29,16 @@ function App() {
         </div>
       </div>
     </Router>
+=======
+import './App.css';
+import Login from './components/Login.js';
+
+function App() {
+  return (
+    <div className="App">
+      <Login />
+    </div>
+>>>>>>> cd93b10 (Initial Commit)
   );
 }
 
