@@ -42,13 +42,18 @@ HEAD
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.2",
-    "react-scripts": "^3.0.1",
+    "react-scripts": "^5.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+
   "start": "react-scripts start --openssl-legacy-provider",
->>>>>>> cd93b10 (Initial Commit)
+cd93b10 (Initial Commit)
     "build": "react-scripts build",
+
+    "start": "cross-env NODE_OPTIONS=--openssl-legacy-provider react-scripts start",
+    "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider react-scripts build",
+eb854c5 (second commit/fixing errors)
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -69,11 +74,17 @@ HEAD
       "last 1 firefox version",
       "last 1 safari version"
     ]
-<<<<<<< HEAD
+ HEAD
+ HEAD
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
-=======
->>>>>>> cd93b10 (Initial Commit)
+
+ cd93b10 (Initial Commit)
+
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
+ eb854c5 (second commit/fixing errors)
   }
 }

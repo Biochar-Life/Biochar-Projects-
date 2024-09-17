@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-// eslint-disable-next-line no-unused-vars
-import { GoogleLogin, googleLogout } from '@react-oauth/google';
-import './Login.css'; // Create CSS for styling
-import logo from '../assets/logo.jpg'; // Logo image
-import background from '../assets/background.jpg'; // Background image
+import './Login.css';
+import logo from '../assets/logo.jpg';
+import background from '../assets/background.jpg';
 
 function Login() {
   const [username, setUsername] = useState('');
@@ -16,11 +14,6 @@ function Login() {
       return;
     }
     console.log('Logged in with username:', username);
-  };
-
-  const handleGoogleLogin = (response) => {
-    console.log('Google Login successful:', response);
-    // Check if the email is in the people table (you'll need backend API for this)
   };
 
   return (
@@ -51,7 +44,6 @@ function Login() {
           </div>
           <button type="submit" className="btn">Login</button>
         </form>
-        <GoogleLogin onSuccess={handleGoogleLogin} onError={() => console.log('Google login failed')} />
       </div>
     </div>
   );
