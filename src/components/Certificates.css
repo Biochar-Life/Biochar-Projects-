@@ -1,0 +1,23 @@
+/* src/components/Certificates.css */
+.certificates-page {
+    padding: 20px;
+  }
+  
+  .certificates-page table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .certificates-page table, th, td {
+    border: 1px solid #ddd;
+  }
+  
+  .certificates-page th, td {
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .certificates-page th {
+    background-color: #f4f4f4;
+  }
+  

@@ -1,0 +1,84 @@
+/* src/components/Dashboard.css */
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.search-fields,
+.display-elements,
+.region-summary {
+  margin-bottom: 20px;
+}
+
+.search-fields {
+  display: grid;
+  gap: 10px;
+}
+
+.search-fields label {
+  display: flex;
+  align-items: center;
+}
+
+.search-fields input {
+  margin-left: 10px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 200px;
+}
+
+.display-elements {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.display-item {
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.display-item:hover {
+  background-color: #e0e0e0;
+  border-color: #ccc;
+}
+
+.display-item h3 {
+  margin-top: 0;
+}
+
+.region-summary {
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+
+.region-summary h3 {
+  margin-top: 0;
+}
+
+.region-summary p {
+  margin: 5px 0;
+}
+
+h1, h2, h3 {
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .display-elements {
+    grid-template-columns: 1fr;
+  }
+
+  .search-fields input {
+    width: 100%;
+  }
+}
