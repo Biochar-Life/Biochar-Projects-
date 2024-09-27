@@ -1,34 +1,43 @@
+// server.js
 const express = require('express');
-const { Pool } = require('pg');
-const cors = require('cors');  // Import CORS
+const { OAuth2Client } = require('google-auth-library');
+const pool = require('./db'); // Import the PostgreSQL connection
+
 const app = express();
-const port = 5000;
+const client = new OAuth2Client("YOUR_GOOGLE_CLIENT_ID"); // Replace with your Google Client ID
 
-// Enable CORS
-app.use(cors());
+app.use(express.json());
 
-const pool = new Pool({
-  user: 'biochar_admin',
-  host: 'biocharlife.c3i8egwa493g.ap-southeast-1.rds.amazonaws.com',
-  database: 'BiocharLife_INT',
-  password: 'BioAd11Jun2024',
-  port: 5432,
-  ssl: {
-    rejectUnauthorized: false  // Add this line for SSL
-  }
-});
+app.post('/api/check-google-email', async (req, res) => {
+  const { token } = req.body;
 
-app.get('/certificates', async (req, res) => {
   try {
-    const result = await pool.query('SELECT * FROM certificates');
-    res.json(result.rows);
-  } catch (err) {
-    console.error(err);
-    res.status(500).send('Server Error');
+    // Verify Google ID token
+    const ticket = await client.verifyIdToken({
+      idToken: token,
+      audience: "YOUR_GOOGLE_CLIENT_ID", // Replace with your Google Client ID
+    });
+
+    const payload = ticket.getPayload();
+    const email = payload.email;
+
+    // Query the database to check if email exists in the people table
+    const query = 'SELECT * FROM people WHERE email = $1';
+    const result = await pool.query(query, [email]);
+
+    if (result.rows.length > 0) {
+      // Email exists in people table
+      res.json({ exists: true });
+    } else {
+      // Email does not exist
+      res.json({ exists: false });
+    }
+  } catch (error) {
+    console.error('Error verifying Google token or querying database', error);
+    res.status(500).json({ error: 'Internal server error' });
   }
 });
 
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+app.listen(3001, () => {
+  console.log('Server is running on port 3001');
 });
-
